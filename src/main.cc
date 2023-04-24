@@ -150,10 +150,10 @@ void setup_frame_table()
     frame_table = new frame_t[MAX_FRAMES];
     for (int i = 0; i < MAX_FRAMES; i++)
     {
-        frame_table[i].index = i;
-        frame_table[i].mapped = 0;
         frame_table[i].pid = -1;
+        frame_table[i].index = i;
         frame_table[i].vpage = -1;
+        frame_table[i].mapped = 0;
         frame_table[i].lastUseTime = 0;
         freelist.emplace_back(i);
     }
@@ -226,9 +226,9 @@ frame_t *allocate_frame_from_free_list()
     return NULL;
   else
   {
-    int fid = freelist.front();
+    int index = freelist.front();
     freelist.pop_front();
-    return &frame_table[fid];
+    return &frame_table[index];
   }
 }
 

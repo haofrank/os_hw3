@@ -22,8 +22,8 @@ typedef struct
 typedef struct
 {
     int pid;
-    int vpage;
     int index;
+    int vpage;
     bool mapped = false;
     unsigned int age : 32;
     unsigned int lastUseTime = 0;
